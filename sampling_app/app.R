@@ -239,7 +239,7 @@ server <- function(input, output, session) {
       paste("SamplingFrameTemplate.csv")
     },
     content = function(file) {
-      file.copy("/srv/shiny-server/sampling_app/test.csv", file)
+      file.copy("test.csv", file)
     }
   )
   
@@ -383,7 +383,7 @@ server <- function(input, output, session) {
   output$contents <- renderDataTable({df2()})
   
   meta_data <- reactive({
-    meta.df <- read.csv("/srv/shiny-server/sampling_app/data/dataframe.csv")
+    meta.df <- read.csv("dataframe.csv")
     meta.df$num_clusters[1] <- input$num_clusters
     meta.df$cluster_size[1] <- input$cluster_size
     meta.df$sample_size[1] <- input$num_clusters * input$cluster_size

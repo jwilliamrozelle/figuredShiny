@@ -10,7 +10,7 @@ library(shinythemes)
 
 # Load data ###############################################################
 
-child.df <- readRDS("dhs_app/childdf.rds")
+child.df <- readRDS("childdf.rds")
 
 child.df$whz1 <- child.df$hc72
 child.df$whz1 <- ifelse(child.df$hc70 == 9999, NA, child.df$whz1)
