@@ -1,4 +1,7 @@
 
+install.packages("<package>", lib="/usr/local/lib/R/site-library")
+
+
 library(shiny)
 library(openxlsx)
 library(dplyr)
@@ -42,19 +45,20 @@ ui <- fluidPage(
       
       # Explanation of the app.
       tags$h3("About Codebook.R"),
-      # tags$p("I create a lot of surveys in ODK, and usually do so by creating the form first in excel, and then uploading to a kobo server or ONA. I often, then, later have a need to create a single document with a codebook. There were often times I used the Nafundi and Task Force created ", tags$a(href = "https://opendatakit.org/2013/06/task-force-and-nafundi-release-codebook-generator-for-odk/", "LINKS Codebook Generator. However, I found that was often insufficient for my needs. This was for several reasons. More sophisticated calculations, like `pulldata()`, broke it. Additionally, I couldn't seek skip patterns or calculations. Finally - it output into pdf format, which made edits or rearranging more challenging.")),
-      # tags$p("Since I always start my XFORMS in Excel, it made sense to simply create an app that would take an xls form and turn it into a single sheet codebook. So, I wrote a few lines of R code and made this!"),
-      # tags$p("This is a simple project, but open source. You can find the code for this and other apps ", tags$a(href="https://github.com/jwilliamrozelle/figuredShiny", "here"), ". Currently, this only takes xlsx forms. If you develop your forms in Excel, you can upload it directly here. If you work in kobotoolbox or ONA, you should be able to download your work as an xlsx file and do the same. At some point, I may add support for XForms in XML, but the parser for that will add a considerable level of sophistication that I just don't need or use. If that is of any interest to you, comment on my github or send me a message there."),
-      # tags$h4("Known limitations"),
-      # tags$ul(
-      #   tags$li("You cannot use a file with multiple languages. Currently, only the `label`column will be recognized."),
-      #   tags$li("There may be versions of ODK that the current codebook maker will not work for.")
-      # ),
-      # tags$p("Both of these issues should be infrequent, but will be addressed in future versions. Find the source code for this app under a GNU license at https://github.com/jwilliamrozelle/figuredio."),
-      # tags$h3("Instructions"),
-      # tags$ol(
-      #   tags$li("Upload your .xls or .xlsx odk form. For now, the survey worksheet must have columns called `label`, `type`, `name`, `relevant` and `calculation`. The choices tab must have columns labelled `list_type`, `name`, and `label`."),
-      #   tags$li("Download the generated sample in xlsx format by clicking 'Download Codebook'.")
+      tags$p("I create a lot of surveys in ODK, and usually do so by creating the form first in excel, and then uploading to a kobo server or ONA. I often, then, later have a need to create a single document with a codebook. There were often times I used the Nafundi and Task Force created ", tags$a(href = "https://opendatakit.org/2013/06/task-force-and-nafundi-release-codebook-generator-for-odk/", "LINKS Codebook Generator. However, I found that was often insufficient for my needs. This was for several reasons. More sophisticated calculations, like `pulldata()`, broke it. Additionally, I couldn't seek skip patterns or calculations. Finally - it output into pdf format, which made edits or rearranging more challenging.")),
+      tags$p("Since I always start my XFORMS in Excel, it made sense to simply create an app that would take an xls form and turn it into a single sheet codebook. So, I wrote a few lines of R code and made this!"),
+      tags$p("This is a simple project, but open source. You can find the code for this and other apps ", tags$a(href="https://github.com/jwilliamrozelle/figuredShiny", "here"), ". Currently, this only takes xlsx forms. If you develop your forms in Excel, you can upload it directly here. If you work in kobotoolbox or ONA, you should be able to download your work as an xlsx file and do the same. At some point, I may add support for XForms in XML, but the parser for that will add a considerable level of sophistication that I just don't need or use. If that is of any interest to you, comment on my github or send me a message there."),
+      tags$h4("Known limitations"),
+      tags$ul(
+        tags$li("You cannot use a file with multiple languages. Currently, only the `label`column will be recognized."),
+        tags$li("There may be versions of ODK that the current codebook maker will not work for.")
+      ),
+      tags$p("Both of these issues should be infrequent, but will be addressed in future versions. Find the source code for this app under a GNU license at https://github.com/jwilliamrozelle/figuredio."),
+      tags$h3("Instructions"),
+      tags$ol(
+        tags$li("Upload your .xls or .xlsx odk form. For now, the survey worksheet must have columns called `label`, `type`, `name`, `relevant` and `calculation`. The choices tab must have columns labelled `list_type`, `name`, and `label`."),
+        tags$li("Download the generated sample in xlsx format by clicking 'Download Codebook'.")
+      ),
       #Button to download resulting data
       tags$hr(),
       downloadButton("downloadData", "Download Codebook")
